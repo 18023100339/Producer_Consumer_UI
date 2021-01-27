@@ -19,7 +19,7 @@ int proCount = 0; //产品号，递增
 int mutex = 1; //互斥使用信号量
 int empty = N; //消费者信号量
 int full = 0; //生产者信号量
-int proCmutex = 1; //互斥锁
+int proCmutex = 1; //互斥
  
 @interface ViewController () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong, nonatomic) UICollectionView *cv;
@@ -165,10 +165,7 @@ int proCmutex = 1; //互斥锁
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cvCell forIndexPath:indexPath];
     
     [cell sizeToFit];
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld",indexPath.row]];
-    UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
-    imageV.frame = CGRectMake(0, 0, 50, 50);
-    [cell.contentView addSubview:imageV];
+
     if (buffer[indexPath.row] == 0) {
         cell.backgroundColor = [UIColor whiteColor];
     }else{
